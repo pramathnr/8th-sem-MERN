@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 
 const connectMongodb = require("./config/mongodb");
 
+const cloudinary = require("cloudinary")
+
 //handling uncaught exception
 process.on("uncaughtException",(err)=>{
     console.log(`Error: ${err.message}`);
@@ -17,6 +19,13 @@ dotenv.config({path:"backend/config/config.env"})
 
 //conecting to MongoDB
 connectMongodb()
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+
+});
 
 const server = app.listen(process.env.PORT, ()=>{
 

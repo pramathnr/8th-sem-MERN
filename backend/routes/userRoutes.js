@@ -15,11 +15,11 @@ router.route("/password/reset/:token").put(resetPassword);
 
 router.route("/logout").get(logout);
 
-router.route("/profile").get(isAuthenticatedUser, getUserDetails);
+router.route("/me").get(isAuthenticatedUser, getUserDetails);
 
 router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 
-router.route("/profile/update").put(isAuthenticatedUser, updateProfile);
+router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 
 router.route("/admin/users").get(isAuthenticatedUser,authorizedRoles("admin"),getAllUser);
 
